@@ -1,0 +1,194 @@
+
+
+{% load static %}
+{% load json_utils %}
+
+{% block content %}
+
+<html>
+
+<body>
+<head>
+
+
+<style>
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 0 0 200px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .title-flex {
+        margin-top: 10px;
+    }
+
+    .box-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .user-follow-info {
+        color: #777;
+        margin-bottom: 5px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #9cebd5;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 3px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background-color: #79b0a1;
+    }
+
+    .search{
+
+        margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 300px; /* Adjust width as needed */
+    }
+    .inp{
+
+
+        width: 300px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */
+  font-size: 18px; /* Adjust the font size as needed */
+  padding: 10px; 
+    }
+    .titre{
+        font-family: 'Arial', sans-serif;
+  font-size: 36px;
+  color: #333333;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #999999;
+  padding-bottom: 10px;
+        
+  text-align: center;
+  margin: 0 auto;
+
+    }
+</style>
+
+
+
+<script>
+
+
+
+
+</script>
+<h1 class="titre">Bienvenue a la liste des Produit</h1>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<header>
+    <div class="search">
+      <label><h2>Rechercher les catégories:</h2></label>
+      <input type="search" placeholder="Search your category" class="inp" id="category-search">
+    </div>
+    
+      
+      <br>
+      <br>
+      <br>
+      
+      <div class="container">
+        <div class="wrap">
+          <div class="box">
+            <div class="box-top" style="display: flex; flex-wrap: wrap;">
+              {% for produit in produits %}
+              <div class="card {{ produit.categorie.type }}" style="flex: 0 0 200px; margin: 10px;">
+                <img src='/media/{{ produit.Img }}' class="rounded float-start" height="200px" width="200px">
+                <div class="title-flex">
+                  <h3 class="box-title">{{ produit.libelle }}</h3>
+                  <p class="user-follow-info">{{ produit.prix }} DT.</p>       
+                  <p class="user-follow-info">{{ produit.Fournisseur.name }} DT.</p>
+                  <a href="#" class="button">acheter</a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        const Search = document.getElementById('category-search');
+        const productCards = document.getElementsByClassName('card');
+        
+        Search.addEventListener('input', function() {
+          const searchValue = this.value.toLowerCase();
+        
+          Array.from(productCards).forEach(function(card) {
+            const categoryType = card.classList[1];
+            if (categoryType === searchValue || searchValue === '') {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      </script>
+  
+  
+  
+  
+  
+  {% endblock %}
+  </html>

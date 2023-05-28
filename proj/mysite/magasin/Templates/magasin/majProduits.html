@@ -1,0 +1,93 @@
+
+
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        .row {
+            margin-bottom: 20px;
+        }
+    
+        .text-center {
+            text-align: center;
+        }
+    
+        .mt-5 {
+            margin-top: 50px;
+        }
+    
+        .col-md-8 {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    
+        .post-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #9cebd5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+    
+        .btn:hover {
+            background-color: #79b0a1;
+        }
+    </style>
+    
+</head>
+
+
+
+
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h2 class="mt-5">Manip Produit ...... </h2>
+    </div> 
+  </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </form>
+    </div> 
+  </div>
+</div>
+{% endblock %}
